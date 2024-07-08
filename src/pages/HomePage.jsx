@@ -1,23 +1,21 @@
+import { useState } from 'react';
 import { ProductCard } from '../components/ProductCard';
-
-const productsRaw = [
-  {
-    name: 'Dark Green Long Fit',
-    price: 110000,
-    imageUrl:
-      'https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/d386614fb183c97bec016e19f0d0c3fff44ebca6_xxl-1.jpg',
-    stock: 4,
-  },
-  {
-    name: 'Dark Blue T-shirt',
-    price: 120000,
-    imageUrl:
-      'https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/fdcf591cc8bb49df622e0a0198e61233c7005de3_xxl-1.jpg',
-    stock: 0,
-  },
-];
+import { axiosInstance } from '@/lib/axios';
 
 const HomePage = () => {
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    try {
+      const response = await axiosInstance.get('/products');
+
+      console.log(response.data);
+      setProducts(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <main className="min-h-[80vh] max-w-screen-md mx-auto px-4 mt-8">
@@ -31,8 +29,10 @@ const HomePage = () => {
           </p>
         </div>
 
+        <button onClick={getProducts}>fetch</button>
+
         <div className="grid grid-cols-2 gap-4">
-          {productsRaw.map((product, i) => (
+          {products.map((product, i) => (
             <ProductCard
               key={i}
               imageUrl={product.imageUrl}
