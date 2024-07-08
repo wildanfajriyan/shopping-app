@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "name": "Dark Green Long Fit",
+      "price": 110000,
+      "imageUrl": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/d386614fb183c97bec016e19f0d0c3fff44ebca6_xxl-1.jpg",
+      "stock": 4,
+      "id": 1
+    },
+    {
+      "name": "Dark Blue T-shirt",
+      "price": 120000,
+      "imageUrl": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/fdcf591cc8bb49df622e0a0198e61233c7005de3_xxl-1.jpg",
+      "stock": 0,
+      "id": 2
+    }
+  ]
+}
