@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { IoIosAdd, IoIosRemove } from 'react-icons/io';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
-export const ProductCard = ({ imageUrl, name, price, stock }) => {
+export const ProductCard = ({ id, imageUrl, name, price, stock }) => {
   const [quantity, setQuantity] = useState(0);
 
   const decrementQuantity = () => {
@@ -23,17 +24,20 @@ export const ProductCard = ({ imageUrl, name, price, stock }) => {
 
   return (
     <div className="p-4 border rounded-md md:max-w-96 flex flex-col gap-4">
-      <div className="aspect-square w-full overflow-hidden">
+      <Link
+        to={`product/${id}`}
+        className="aspect-square w-full overflow-hidden"
+      >
         <img className="w-full" src={imageUrl} alt="product" />
-      </div>
+      </Link>
 
-      <div>
+      <Link to={`product/${id}`}>
         <p className="text-md">{name}</p>
         <p className="text-xl font-semibold">
           Rp {price.toLocaleString('id-ID')}
         </p>
         <p className="text-muted-foreground text-sm">In stock: {stock}</p>
-      </div>
+      </Link>
 
       <div className="flex flex-col gap-4">
         {/* BUTTON QUANTITY */}
@@ -46,7 +50,9 @@ export const ProductCard = ({ imageUrl, name, price, stock }) => {
           >
             <IoIosRemove className="h-6 w-6" />
           </Button>
+
           <p className="text-lg font-bold">{quantity}</p>
+
           <Button
             disabled={quantity >= stock}
             size="icon"

@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProductCard } from '../components/ProductCard';
 import { axiosInstance } from '@/lib/axios';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const [productsIsLoading, setProductsIsLoading] = useState(false);
 
   const getProducts = async () => {
+    setProductsIsLoading(true);
     try {
       const response = await axiosInstance.get('/products');
-
-      console.log(response.data);
       setProducts(response.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setProductsIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <>
@@ -29,19 +36,25 @@ const HomePage = () => {
           </p>
         </div>
 
-        <button onClick={getProducts}>fetch</button>
-
-        <div className="grid grid-cols-2 gap-4">
-          {products.map((product, i) => (
-            <ProductCard
-              key={i}
-              imageUrl={product.imageUrl}
-              name={product.name}
-              price={product.price}
-              stock={product.stock}
-            />
-          ))}
-        </div>
+        {productsIsLoading ? (
+          <div className="grid grid-cols-2 gap-4">
+            <Skeleton className="w-[360px] h-[560px]" />
+            <Skeleton className="w-[360px] h-[560px]" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-4">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                imageUrl={product.imageUrl}
+                name={product.name}
+                price={product.price}
+                stock={product.stock}
+              />
+            ))}
+          </div>
+        )}
       </main>
     </>
   );

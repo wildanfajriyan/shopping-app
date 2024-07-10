@@ -8,7 +8,9 @@ export const Header = () => {
   return (
     <header className="h-16 border-b flex items-center justify-between px-10">
       {/* BRAND */}
-      <p className="text-2xl font-bold hover:cursor-pointer">e-commerce</p>
+      <Link to="/">
+        <p className="text-2xl font-bold hover:cursor-pointer">e-commerce</p>
+      </Link>
 
       {/* SEARCH BAR */}
       <Input className="max-w-[600px]" placeholder="Search products..." />
