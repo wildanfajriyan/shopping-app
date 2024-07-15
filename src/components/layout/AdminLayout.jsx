@@ -1,4 +1,4 @@
-import { IoAdd, IoCart, IoPerson, IoPricetag } from 'react-icons/io5';
+import { IoCart, IoPerson, IoPricetag } from 'react-icons/io5';
 import { Button } from '../ui/button';
 
 const SidebarItem = ({ children }) => {
@@ -42,7 +42,7 @@ export const AdminLayout = ({ title, description, rightSection, children }) => {
         </header>
 
         <main className="flex flex-col p-4">
-          <div className="flex justify-between items-center pb-4 border-b mb-8">
+          <div className="flex justify-between items-center pb-4 mb-8">
             <div>
               <h1 className="font-bold text-4xl">{title}</h1>
               <p className="text-muted-foreground">{description}</p>
