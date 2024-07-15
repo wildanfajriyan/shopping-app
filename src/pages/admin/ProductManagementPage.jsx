@@ -18,7 +18,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import NotFoundPage from '../NotFoundPage';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 const ProductManagementPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,6 +27,7 @@ const ProductManagementPage = () => {
   const [products, setProducts] = useState([]);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [pages, setPages] = useState(0);
+  const [productName, setProductName] = useState('');
 
   const handleNextPage = () => {
     searchParams.set('page', Number(searchParams.get('page')) + 1);
@@ -45,6 +47,7 @@ const ProductManagementPage = () => {
         params: {
           _per_page: 5,
           _page: Number(searchParams.get('page')),
+          name: searchParams.get('search'),
         },
       });
 
@@ -56,11 +59,24 @@ const ProductManagementPage = () => {
     }
   };
 
+  const searchProduct = () => {
+    if (productName) {
+      searchParams.set('search', productName);
+
+      setSearchParams(searchParams);
+      setProductName('');
+    } else {
+      searchParams.delete('search');
+
+      setSearchParams(searchParams);
+    }
+  };
+
   useEffect(() => {
     if (searchParams.get('page')) {
       getProducts();
     }
-  }, [searchParams.get('page')]);
+  }, [searchParams.get('page'), searchParams.get('search')]);
 
   useEffect(() => {
     if (!searchParams.get('page')) {
@@ -70,10 +86,7 @@ const ProductManagementPage = () => {
     }
   }, []);
 
-  return Number(searchParams.get('page')) > pages ||
-    Number(searchParams.get('page')) < 1 ? (
-    <NotFoundPage />
-  ) : (
+  return (
     <div>
       <AdminLayout
         title="Product Management"
@@ -85,6 +98,18 @@ const ProductManagementPage = () => {
           </Button>
         }
       >
+        <div className="mb-8">
+          <Label>Search Product Name</Label>
+          <div className="flex gap-4">
+            <Input
+              onChange={(e) => setProductName(e.target.value)}
+              value={productName}
+              className="max-w-[400px]"
+            />
+            <Button onClick={searchProduct}>Search</Button>
+          </div>
+        </div>
+
         <Table className="p-4 border rounded-md">
           <TableHeader>
             <TableRow>
@@ -96,23 +121,28 @@ const ProductManagementPage = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product) => (
-              <>
-                <TableRow>
-                  <TableCell>{product.id}</TableCell>
-                  <TableCell>{product.name}</TableCell>
-                  <TableCell>
-                    Rp {product.price.toLocaleString('id-ID')}
-                  </TableCell>
-                  <TableCell>{product.stock}</TableCell>
-                  <TableCell>
-                    <Button variant="ghost" size="icon">
-                      <Ellipsis className="w-6 h-6" />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              </>
-            ))}
+            {Number(searchParams.get('page')) > pages ||
+            Number(searchParams.get('page')) < 1 ? (
+              <TableRow></TableRow>
+            ) : (
+              products.map((product) => (
+                <>
+                  <TableRow>
+                    <TableCell>{product.id}</TableCell>
+                    <TableCell>{product.name}</TableCell>
+                    <TableCell>
+                      Rp {product.price.toLocaleString('id-ID')}
+                    </TableCell>
+                    <TableCell>{product.stock}</TableCell>
+                    <TableCell>
+                      <Button variant="ghost" size="icon">
+                        <Ellipsis className="w-6 h-6" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                </>
+              ))
+            )}
           </TableBody>
         </Table>
 
