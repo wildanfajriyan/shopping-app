@@ -31,6 +31,18 @@ const ProductDetailPage = () => {
     }
   };
 
+  const decrementQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const incrementQuantity = () => {
+    if (quantity < product.stock) {
+      setQuantity(quantity + 1);
+    }
+  };
+
   useEffect(() => {
     getProduct();
   }, []);
@@ -70,13 +82,23 @@ const ProductDetailPage = () => {
           )}
 
           <div className="flex items-center gap-3 mt-6">
-            <Button disabled={quantity === 0} size="icon" variant="ghost">
+            <Button
+              disabled={quantity === 0}
+              size="icon"
+              variant="ghost"
+              onClick={decrementQuantity}
+            >
               <IoIosRemove className="h-6 w-6" />
             </Button>
 
             <p className="text-lg font-bold">{quantity}</p>
 
-            <Button size="icon" variant="ghost">
+            <Button
+              disabled={quantity >= product.stock}
+              size="icon"
+              variant="ghost"
+              onClick={incrementQuantity}
+            >
               <IoIosAdd className="h-6 w-6" />
             </Button>
           </div>
