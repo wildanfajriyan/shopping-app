@@ -20,6 +20,8 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { axiosInstance } from '@/lib/axios';
+import { useNavigate } from 'react-router-dom';
 
 const createProductFormSchema = z.object({
   name: z
@@ -32,6 +34,8 @@ const createProductFormSchema = z.object({
 });
 
 const CreateProductPage = () => {
+  const navigate = useNavigate();
+
   const form = useForm({
     defaultValues: {
       name: '',
@@ -42,8 +46,16 @@ const CreateProductPage = () => {
     resolver: zodResolver(createProductFormSchema),
   });
 
-  const handleCreateProduct = (values) => {
-    console.log(values);
+  const handleCreateProduct = async (values) => {
+    try {
+      await axiosInstance.post('/products', values);
+
+      alert('product created');
+
+      navigate('/admin/products');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
