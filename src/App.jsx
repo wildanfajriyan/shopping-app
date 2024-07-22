@@ -5,6 +5,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ProductManagementPage from './pages/admin/ProductManagementPage';
+import CreateProductPage from './pages/admin/CreateProductPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
@@ -20,7 +21,12 @@ function App() {
         <Route path="/cart" Component={CartPage} />
         <Route path="/login" Component={LoginPage} />
         <Route path="/product/:id" Component={ProductDetailPage} />
-        <Route path="/admin/product" Component={ProductManagementPage} />
+
+        <Route path="/admin">
+          <Route path="products" Component={ProductManagementPage} />
+          <Route path="products/create" Component={CreateProductPage} />
+        </Route>
+
         <Route path="*" Component={NotFoundPage} />
       </Routes>
 

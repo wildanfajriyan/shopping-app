@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IoAdd } from 'react-icons/io5';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Ellipsis } from 'lucide-react';
 import { axiosInstance } from '@/lib/axios';
 import { AdminLayout } from '@/components/layout/AdminLayout';
@@ -92,10 +92,12 @@ const ProductManagementPage = () => {
         title="Product Management"
         description="Managing our products"
         rightSection={
-          <Button>
-            <IoAdd className="h-6 w-6 mr-2" />
-            Add Product
-          </Button>
+          <Link to="/admin/products/create">
+            <Button>
+              <IoAdd className="h-6 w-6 mr-2" />
+              Add Product
+            </Button>
+          </Link>
         }
       >
         <div className="mb-8">
