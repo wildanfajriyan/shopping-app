@@ -8,6 +8,7 @@ import ProductManagementPage from './pages/admin/ProductManagementPage';
 import CreateProductPage from './pages/admin/CreateProductPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import EditProductPage from './pages/admin/EditProductPage';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/admin">
           <Route path="products" Component={ProductManagementPage} />
           <Route path="products/create" Component={CreateProductPage} />
+          <Route path="products/edit/:id" Component={EditProductPage} />
         </Route>
 
         <Route path="*" Component={NotFoundPage} />
