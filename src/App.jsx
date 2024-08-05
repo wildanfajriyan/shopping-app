@@ -9,9 +9,16 @@ import CreateProductPage from './pages/admin/CreateProductPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import EditProductPage from './pages/admin/EditProductPage';
+import RegisterPage from './pages/RegisterPage';
+import { useHydration } from './hooks/useHydration';
 
 function App() {
   const location = useLocation();
+  const { isHydrated } = useHydration();
+
+  if (!isHydrated) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -21,6 +28,7 @@ function App() {
         <Route path="/" Component={HomePage} />
         <Route path="/cart" Component={CartPage} />
         <Route path="/login" Component={LoginPage} />
+        <Route path="/register" Component={RegisterPage} />
         <Route path="/product/:id" Component={ProductDetailPage} />
 
         <Route path="/admin">

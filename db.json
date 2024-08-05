@@ -119,5 +119,19 @@
       "stock": 9,
       "id": "17"
     }
+  ],
+  "users": [
+    {
+      "id": "89be",
+      "username": "bob",
+      "password": "bob12345678",
+      "role": "user"
+    },
+    {
+      "id": "e23d",
+      "username": "admin",
+      "password": "password",
+      "role": "admin"
+    }
   ]
 }

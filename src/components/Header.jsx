@@ -1,10 +1,20 @@
 import { IoCart, IoHeart } from 'react-icons/io5';
 import { Separator } from './ui/separator';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 export const Header = () => {
+  const userSelector = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.removeItem('current-user');
+
+    dispatch({ type: 'USER_LOGOUT' });
+  };
+
   return (
     <header className="h-16 border-b flex items-center justify-between px-10">
       {/* BRAND */}
@@ -31,9 +41,26 @@ export const Header = () => {
 
         <Separator orientation="vertical" className="h-full" />
 
-        <div className="flex space-x-2">
-          <Button>Log In</Button>
-          <Button variant="outline">Sign Up</Button>
+        <div className="flex space-x-2 items-center">
+          {userSelector.id ? (
+            <>
+              <h3>
+                Hello {userSelector.username} ({userSelector.role})
+              </h3>
+              <Button onClick={handleLogout} variant="destructive">
+                Log out
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button>Log In</Button>
+              </Link>
+              <Link to="/register">
+                <Button variant="outline">Sign Up</Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
