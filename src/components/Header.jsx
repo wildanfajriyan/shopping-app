@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { axiosInstance } from '@/lib/axios';
+import { useEffect } from 'react';
+import { getCart } from '@/services/cartService';
 
 export const Header = () => {
   const userSelector = useSelector((state) => state.user);
+  const cartSelector = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -14,6 +18,10 @@ export const Header = () => {
 
     dispatch({ type: 'USER_LOGOUT' });
   };
+
+  useEffect(() => {
+    getCart(userSelector.id);
+  }, []);
 
   return (
     <header className="h-16 border-b flex items-center justify-between px-10">
@@ -29,8 +37,11 @@ export const Header = () => {
       <div className="flex space-x-4 h-5 items-center">
         <div className="flex space-x-2">
           <Link to="/cart">
-            <Button size="icon" variant="ghost">
-              <IoCart className="h-6 w-6" />
+            <Button variant="ghost">
+              <IoCart className="h-6 w-6 mr-2" />
+              <span className="text-lg font-bold">
+                {cartSelector.items.length}
+              </span>
             </Button>
           </Link>
 

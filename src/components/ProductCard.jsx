@@ -2,9 +2,14 @@ import { useState } from 'react';
 import { IoIosAdd, IoIosRemove } from 'react-icons/io';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
+import { axiosInstance } from '@/lib/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCart } from '@/services/cartService';
 
 export const ProductCard = ({ id, imageUrl, name, price, stock }) => {
   const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
+  const userSelector = useSelector((state) => state.user);
 
   const decrementQuantity = () => {
     if (quantity > 0) {
@@ -18,8 +23,49 @@ export const ProductCard = ({ id, imageUrl, name, price, stock }) => {
     }
   };
 
-  const addToCart = () => {
-    alert('add to cart pressed');
+  const addToCart = async () => {
+    if (!userSelector.id) {
+      alert('please login first');
+      return;
+    }
+
+    try {
+      const cartResponse = await axiosInstance.get('/carts', {
+        params: {
+          userId: userSelector.id,
+          _embed: 'product',
+        },
+      });
+
+      const existingProduct = cartResponse.data.find((cart) => {
+        return cart.productId === id;
+      });
+
+      if (!existingProduct) {
+        await axiosInstance.post('/carts', {
+          userId: userSelector.id,
+          productId: id,
+          quantity,
+        });
+      } else {
+        if (
+          existingProduct.quantity + quantity >
+          existingProduct.product.stock
+        ) {
+          alert('Quantity is over the stock');
+          return;
+        }
+
+        await axiosInstance.patch(`/carts/${existingProduct.id}`, {
+          quantity: existingProduct.quantity + quantity,
+        });
+      }
+
+      alert('Item added to cart');
+      getCart(userSelector.id);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -64,7 +110,11 @@ export const ProductCard = ({ id, imageUrl, name, price, stock }) => {
         </div>
 
         {/* BUTTON ADD TO CART */}
-        <Button disabled={!stock} className="w-full" onClick={addToCart}>
+        <Button
+          disabled={!stock || quantity < 1}
+          className="w-full"
+          onClick={addToCart}
+        >
           {!stock ? 'Out of stock' : 'Add to cart'}
         </Button>
       </div>

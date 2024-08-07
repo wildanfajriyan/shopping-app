@@ -11,7 +11,7 @@
       "name": "Dark Blue T-shirt",
       "price": 120000,
       "imageUrl": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/fdcf591cc8bb49df622e0a0198e61233c7005de3_xxl-1.jpg",
-      "stock": 0,
+      "stock": 2,
       "id": "2"
     },
     {
@@ -132,6 +132,20 @@
       "username": "admin",
       "password": "password",
       "role": "admin"
+    }
+  ],
+  "carts": [
+    {
+      "id": "7dca",
+      "userId": "89be",
+      "productId": "1",
+      "quantity": 4
+    },
+    {
+      "id": "6e77",
+      "userId": "89be",
+      "productId": "2",
+      "quantity": 2
     }
   ]
 }
