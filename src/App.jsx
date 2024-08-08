@@ -11,6 +11,8 @@ import { Footer } from './components/Footer';
 import EditProductPage from './pages/admin/EditProductPage';
 import RegisterPage from './pages/RegisterPage';
 import { useHydration } from './hooks/useHydration';
+import HistoryPage from './pages/HistoryPage';
+import HistoryDetailPage from './pages/HistoryDetailPage';
 
 function App() {
   const location = useLocation();
@@ -29,6 +31,8 @@ function App() {
         <Route path="/cart" Component={CartPage} />
         <Route path="/login" Component={LoginPage} />
         <Route path="/register" Component={RegisterPage} />
+        <Route path="/history" Component={HistoryPage} />
+        <Route path="/history/:transactionId" Component={HistoryDetailPage} />
         <Route path="/product/:id" Component={ProductDetailPage} />
 
         <Route path="/admin">
