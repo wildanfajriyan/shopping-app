@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { IoIosAdd, IoIosRemove } from 'react-icons/io';
 import { IoHeartOutline } from 'react-icons/io5';
 import { useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { axiosInstance } from '@/lib/axios';
 import { Skeleton } from '@/components/ui/skeleton';
+import { getCart } from '@/services/cartService';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const userSelector = useSelector((state) => state.user);
 
   const [product, setProduct] = useState({
     name: '',
@@ -43,6 +46,51 @@ const ProductDetailPage = () => {
     }
   };
 
+  const addToCart = async () => {
+    if (!userSelector.id) {
+      alert('please login first');
+      return;
+    }
+
+    try {
+      const cartResponse = await axiosInstance.get('/carts', {
+        params: {
+          userId: userSelector.id,
+          _embed: 'product',
+        },
+      });
+
+      const existingProduct = cartResponse.data.find((cart) => {
+        return cart.productId === id;
+      });
+
+      if (!existingProduct) {
+        await axiosInstance.post('/carts', {
+          userId: userSelector.id,
+          productId: id,
+          quantity,
+        });
+      } else {
+        if (
+          existingProduct.quantity + quantity >
+          existingProduct.product.stock
+        ) {
+          alert('Quantity is over the stock');
+          return;
+        }
+
+        await axiosInstance.patch(`/carts/${existingProduct.id}`, {
+          quantity: existingProduct.quantity + quantity,
+        });
+      }
+
+      alert('Item added to cart');
+      getCart(userSelector.id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getProduct();
   }, []);
@@ -66,9 +114,14 @@ const ProductDetailPage = () => {
           {productIsLoading ? (
             <Skeleton className="w-[350px] h-[48px]" />
           ) : (
-            <h3 className="text-3xl font-bold">
-              Rp {product.price.toLocaleString('id-ID')}
-            </h3>
+            <>
+              <h3 className="text-3xl font-bold">
+                Rp {product.price.toLocaleString('id-ID')}
+              </h3>
+              <p className="text-muted-foreground text-sm">
+                In stock: {product.stock}
+              </p>
+            </>
           )}
 
           {productIsLoading ? (
@@ -104,7 +157,7 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="flex items-center mt-4 gap-4">
-            <Button className="w-full" size="lg">
+            <Button onClick={addToCart} className="w-full" size="lg">
               Add to cart
             </Button>
 

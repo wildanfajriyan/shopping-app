@@ -82,62 +82,66 @@ const CartPage = () => {
               ))}
             </div>
 
-            <Card className="col-span-5 bg-gray-50 border-0 h-min">
-              <CardHeader>
-                <CardTitle>Order Summary</CardTitle>
-              </CardHeader>
+            {cartSelector.items.length ? (
+              <Card className="col-span-5 bg-gray-50 border-0 h-min">
+                <CardHeader>
+                  <CardTitle>Order Summary</CardTitle>
+                </CardHeader>
 
-              <CardContent>
-                <div className="flex pb-4 justify-between border-b">
-                  <span className="text-sm text-muted-foreground">
-                    Subtotal
-                  </span>
-                  <span>
-                    Rp{' '}
-                    {cartSelector.items
-                      .reduce((a, b) => {
-                        return a + b.quantity * b.product.price;
-                      }, 0)
-                      .toLocaleString('id-ID')}
-                  </span>
-                </div>
+                <CardContent>
+                  <div className="flex pb-4 justify-between border-b">
+                    <span className="text-sm text-muted-foreground">
+                      Subtotal
+                    </span>
+                    <span>
+                      Rp{' '}
+                      {cartSelector.items
+                        .reduce((a, b) => {
+                          return a + b.quantity * b.product.price;
+                        }, 0)
+                        .toLocaleString('id-ID')}
+                    </span>
+                  </div>
 
-                <div className="flex py-4 justify-between border-b">
-                  <span className="text-sm text-muted-foreground">
-                    Taxes (10%)
-                  </span>
-                  <span>
-                    Rp{' '}
-                    {(
-                      cartSelector.items.reduce((a, b) => {
-                        return a + b.quantity * b.product.price;
-                      }, 0) / 10
-                    ).toLocaleString('id-ID')}
-                  </span>
-                </div>
-              </CardContent>
-              <CardFooter className="flex-col flex gap-6">
-                <div className="flex justify-between w-full">
-                  <span className="text-sm font-semibold">Order Total</span>
-                  <span className="font-semibold">
-                    Rp{' '}
-                    {(
-                      cartSelector.items.reduce((a, b) => {
-                        return a + b.quantity * b.product.price;
-                      }, 0) +
-                      cartSelector.items.reduce((a, b) => {
-                        return a + b.quantity * b.product.price;
-                      }, 0) /
-                        10
-                    ).toLocaleString('id-ID')}
-                  </span>
-                </div>
+                  <div className="flex py-4 justify-between border-b">
+                    <span className="text-sm text-muted-foreground">
+                      Taxes (10%)
+                    </span>
+                    <span>
+                      Rp{' '}
+                      {(
+                        cartSelector.items.reduce((a, b) => {
+                          return a + b.quantity * b.product.price;
+                        }, 0) / 10
+                      ).toLocaleString('id-ID')}
+                    </span>
+                  </div>
+                </CardContent>
+                <CardFooter className="flex-col flex gap-6">
+                  <div className="flex justify-between w-full">
+                    <span className="text-sm font-semibold">Order Total</span>
+                    <span className="font-semibold">
+                      Rp{' '}
+                      {(
+                        cartSelector.items.reduce((a, b) => {
+                          return a + b.quantity * b.product.price;
+                        }, 0) +
+                        cartSelector.items.reduce((a, b) => {
+                          return a + b.quantity * b.product.price;
+                        }, 0) /
+                          10
+                      ).toLocaleString('id-ID')}
+                    </span>
+                  </div>
 
-                <Button onClick={handleCheckout} className="w-full">
-                  Checkout
-                </Button>
-              </CardFooter>
-            </Card>
+                  <Button onClick={handleCheckout} className="w-full">
+                    Checkout
+                  </Button>
+                </CardFooter>
+              </Card>
+            ) : (
+              <span>No items</span>
+            )}
           </div>
         </div>
       </main>
