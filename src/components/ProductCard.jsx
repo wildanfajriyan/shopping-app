@@ -3,12 +3,11 @@ import { IoIosAdd, IoIosRemove } from 'react-icons/io';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
 import { axiosInstance } from '@/lib/axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getCart } from '@/services/cartService';
 
 export const ProductCard = ({ id, imageUrl, name, price, stock }) => {
   const [quantity, setQuantity] = useState(0);
-  const dispatch = useDispatch();
   const userSelector = useSelector((state) => state.user);
 
   const decrementQuantity = () => {

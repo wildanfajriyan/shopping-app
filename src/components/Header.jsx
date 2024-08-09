@@ -1,9 +1,8 @@
-import { IoCart, IoHeart } from 'react-icons/io5';
+import { IoCart } from 'react-icons/io5';
 import { Separator } from './ui/separator';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
 import { useEffect } from 'react';
 import { getCart } from '@/services/cartService';
 import { History } from 'lucide-react';
@@ -25,15 +24,10 @@ export const Header = () => {
 
   return (
     <header className="h-16 border-b flex items-center justify-between px-10">
-      {/* BRAND */}
       <Link to="/">
-        <p className="text-2xl font-bold hover:cursor-pointer">e-commerce</p>
+        <p className="text-2xl font-bold hover:cursor-pointer">ECommerce</p>
       </Link>
 
-      {/* SEARCH BAR */}
-      <Input className="max-w-[600px]" placeholder="Search products..." />
-
-      {/* BUTTONS */}
       <div className="flex space-x-4 h-5 items-center">
         <div className="flex space-x-2">
           <Link to="/cart">
@@ -57,9 +51,7 @@ export const Header = () => {
         <div className="flex space-x-2 items-center">
           {userSelector.id ? (
             <>
-              <h3>
-                Hello {userSelector.username} ({userSelector.role})
-              </h3>
+              <h3 className="font-bold">Hello {userSelector.username}</h3>
               <Button onClick={handleLogout} variant="destructive">
                 Log out
               </Button>
