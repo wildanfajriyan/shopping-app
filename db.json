@@ -4,120 +4,113 @@
       "name": "Dark Green Long Fit",
       "price": 110000,
       "imageUrl": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/d386614fb183c97bec016e19f0d0c3fff44ebca6_xxl-1.jpg",
-      "stock": 2,
+      "stock": 4,
       "id": "1"
     },
     {
       "name": "Dark Blue T-shirt",
       "price": 120000,
       "imageUrl": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/fdcf591cc8bb49df622e0a0198e61233c7005de3_xxl-1.jpg",
-      "stock": 1,
+      "stock": 6,
       "id": "2"
     },
     {
       "name": "Red Casual T-Shirt",
       "price": 75000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://i5.walmartimages.com/seo/Women-s-T-Shirts-Casual-Plain-V-neck-Short-Sleeve-Sleeve-Red-L_e4801e59-f3bf-4ac7-891e-f74f20e0b197.c449398a11e182b837c3da1e7dd762ae.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
       "stock": 8,
       "id": "3"
     },
     {
       "name": "Black Leather Jacket",
       "price": 350000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://shangrilaheritage.it/wp-content/uploads/2022/08/shangri-la-heritage-cafe-racer-black-lambskin-women-jacket-still-life-front.jpg",
       "stock": 1,
       "id": "4"
     },
     {
       "name": "White Formal Shirt",
       "price": 90000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjNQcN-Kkm7N6srW6O5ToCHwfgNmStegLk0g&s",
       "stock": 5,
       "id": "5"
     },
     {
       "name": "Grey Hoodie",
       "price": 200000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://down-id.img.susercontent.com/file/e2fc797632cbdbbbb2c17e334cb83ddd",
       "stock": 6,
       "id": "6"
     },
     {
       "name": "Brown Chinos",
       "price": 120000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://i8.amplience.net/i/orlebarbrown/ORLEBAR-BROWN-FALLON-STRETCH-COTTON-SAND-DUNE_277125_FRONT_OB/Fallon-Cotton?$zoomRd$&",
       "stock": 7,
       "id": "7"
     },
     {
       "name": "Yellow Summer Dress",
       "price": 175000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSTG5ylHGmLC4dHiiFNnTjyh2bDYruXb3bJ-9LrHW7W60bpRTpK2sAkaZF3QEgR_gs_CVr5PyeBAbbkOdxXn0NzAqjjcL7fQMO_NlJJn8FMl7vD9_3qGCsg&usqp=CAE",
       "stock": 3,
       "id": "8"
     },
     {
       "name": "Purple Sweater",
       "price": 130000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw02e0c207/images/hi-res/FPUL26027KPUR01_A.jpg?sw=900&sh=1105",
       "stock": 8,
       "id": "9"
     },
     {
       "name": "Orange Workout Shorts",
       "price": 60000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://i5.walmartimages.com/asr/2aa5458b-bdd4-487a-973d-d5d9714b000b.ad82b467ead8ceb259db3245b731b5c6.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
       "stock": 11,
       "id": "10"
     },
     {
       "name": "Navy Blue Blazer",
       "price": 300000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSmoHKgLi0Am5xhZCBjZrf_Hl5lBrX3n920hrGdajrinbyZeQnO17LF0ox9EAdm-JTeuG2wPDW6kQRXX_WlB-fJRQOFzOC38nG1utAjBrbTsdmLIEyM7Kpe&usqp=CAE",
       "stock": 3,
       "id": "11"
     },
     {
       "name": "Pink Pajamas",
       "price": 50000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://cdn11.bigcommerce.com/s-xpcbzfctks/images/stencil/1280x1280/products/1277/11493/CFILPD0020288_RAG195_100__92817__28220.1649856749.jpg?c=1",
       "stock": 12,
       "id": "12"
     },
     {
       "name": "Green Sports Jacket",
       "price": 220000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/3/19/a06fef25-1093-42bd-b623-c8e3d0749de5.jpg",
       "stock": 5,
       "id": "13"
     },
     {
       "name": "Turquoise Skirt",
       "price": 80000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://mobile.yoox.com/images/items/13/13785904XD_14_f.jpg?impolicy=crop&width=387&height=490",
       "stock": 7,
       "id": "14"
     },
     {
       "name": "Maroon Cardigan",
       "price": 110000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu4csFjynQEYIjfk4s3cO_PgiJYT9C9T1igw&s",
       "stock": 6,
       "id": "15"
     },
     {
       "name": "Beige Trench Coat",
       "price": 320000,
-      "imageUrl": "https://placehold.jp/396x594.png",
+      "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSG7YuHJW65MKsMuI1dFBaAEr9Uk8ZR6fO5Qc6tkuzM2mit0xdLCaMESmL4jc32HRipf4U6VFTbxQv-yTfJTI54X42BDdtlGA_ej9zr3oY0x_3FE86_lSUiqQ&usqp=CAE",
       "stock": 2,
       "id": "16"
-    },
-    {
-      "name": "Black Running Shoes",
-      "price": 250000,
-      "imageUrl": "https://placehold.jp/396x594.png",
-      "stock": 9,
-      "id": "17"
     }
   ],
   "users": [
@@ -176,41 +169,6 @@
             "imageUrl": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/fdcf591cc8bb49df622e0a0198e61233c7005de3_xxl-1.jpg",
             "stock": 2,
             "id": "2"
-          }
-        }
-      ]
-    },
-    {
-      "id": "af11",
-      "userId": "89be",
-      "totalPrice": 500000,
-      "tax": 50000,
-      "transactionDate": "2024-08-08T02:17:50.063Z",
-      "items": [
-        {
-          "id": "22a4",
-          "userId": "89be",
-          "productId": "3",
-          "quantity": 2,
-          "product": {
-            "name": "Red Casual T-Shirt",
-            "price": 75000,
-            "imageUrl": "https://placehold.jp/396x594.png",
-            "stock": 10,
-            "id": "3"
-          }
-        },
-        {
-          "id": "4201",
-          "userId": "89be",
-          "productId": "4",
-          "quantity": 1,
-          "product": {
-            "name": "Black Leather Jacket",
-            "price": 350000,
-            "imageUrl": "https://placehold.jp/396x594.png",
-            "stock": 2,
-            "id": "4"
           }
         }
       ]
